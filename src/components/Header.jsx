@@ -35,7 +35,7 @@ function Header() {
                 cursor: "pointer",
               }}
             >
-              Crypto Hunter
+              Crypto World
             </Typography>
             <Select
               variant="outlined"
