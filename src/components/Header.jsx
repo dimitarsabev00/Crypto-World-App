@@ -9,8 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router";
+import { AppState } from "../context/AppContext";
 
 function Header() {
+  const { currency, setCurrency } = AppState();
   const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {
@@ -42,6 +44,8 @@ function Header() {
                 height: 40,
                 marginLeft: 15,
               }}
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
             >
               <MenuItem value={"USD"}>USD</MenuItem>
               <MenuItem value={"EURO"}>EURO</MenuItem>
