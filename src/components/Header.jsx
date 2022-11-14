@@ -27,7 +27,7 @@ function Header() {
             <Typography
               onClick={() => navigate(`/`)}
               variant="h6"
-              sx={{
+              style={{
                 flex: 1,
                 color: "gold",
                 fontFamily: "Montserrat",
@@ -39,7 +39,7 @@ function Header() {
             </Typography>
             <Select
               variant="outlined"
-              sx={{
+              style={{
                 width: 100,
                 height: 40,
                 marginLeft: 15,
