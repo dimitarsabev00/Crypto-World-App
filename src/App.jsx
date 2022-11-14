@@ -7,12 +7,20 @@ import ErrorPage from "./pages/ErrorPage";
 function App() {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/coins/:id" element={<CoinPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <div
+        style={{
+          backgroundColor: "#14161a",
+          color: "white",
+          minHeight: "100vh",
+        }}
+      >
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/coins/:id" element={<CoinPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
