@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import { AppState } from "../context/AppContext";
+import AuthModal from "./Authentication/AuthModel";
 
 function Header() {
-  const { currency, setCurrency } = AppState();
+  const { currency, setCurrency, user } = AppState();
   const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {
@@ -49,6 +50,11 @@ function Header() {
             >
               <MenuItem value={"USD"}>USD</MenuItem>
             </Select>
+            {user ? (
+              <p style={{ marginLeft: "1rem" }}>Logout</p>
+            ) : (
+              <AuthModal />
+            )}
           </Toolbar>
         </Container>
       </AppBar>

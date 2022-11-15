@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import CoinPage from "./pages/CoinPage";
 import Header from "./components/Header";
 import ErrorPage from "./pages/ErrorPage";
+import AlertBox from "./components/AlertBox";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
+      <AlertBox />
     </Router>
   );
 }
