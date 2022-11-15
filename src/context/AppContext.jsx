@@ -8,7 +8,6 @@ const AppContext = ({ children }) => {
 
   useEffect(() => {
     if (currency === "USD") setSymbol("$");
-    else if (currency === "EURO") setSymbol("€");
   }, [currency]);
 
   return (
