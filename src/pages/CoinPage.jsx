@@ -29,16 +29,16 @@ const CoinPage = () => {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
       }}
     >
       <div
         style={{
-          width: "30%",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           marginTop: 25,
-          borderRight: "2px solid grey",
         }}
       >
         <img
