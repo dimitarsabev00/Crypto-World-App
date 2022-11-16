@@ -37,7 +37,7 @@ function Header() {
                 cursor: "pointer",
               }}
             >
-              Crypto World
+              Cryptos4Me
             </Typography>
             <Select
               variant="outlined"
