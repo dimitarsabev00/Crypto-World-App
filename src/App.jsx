@@ -19,23 +19,23 @@ function App() {
         }}
       >
         <Header />
-        <Routes>
-          <Suspense
-            fallback={
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <CircularProgress
-                  style={{ color: "gold" }}
-                  size={250}
-                  thickness={1}
-                />
-              </div>
-            }
-          >
+        <Suspense
+          fallback={
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <CircularProgress
+                style={{ color: "gold" }}
+                size={250}
+                thickness={1}
+              />
+            </div>
+          }
+        >
+          <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/coins/:id" element={<CoinPage />} />
             <Route path="*" element={<ErrorPage />} />
-          </Suspense>
-        </Routes>
+          </Routes>
+        </Suspense>
       </div>
       <AlertBox />
     </Router>
