@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router";
 import { AppState } from "../context/AppContext";
 import AuthModal from "./Authentication/AuthModel";
+import UserSidebar from "./Authentication/UserSidebar";
 
 function Header() {
   const { currency, setCurrency, user } = AppState();
@@ -50,11 +51,7 @@ function Header() {
             >
               <MenuItem value={"USD"}>USD</MenuItem>
             </Select>
-            {user ? (
-              <p style={{ marginLeft: "1rem" }}>Logout</p>
-            ) : (
-              <AuthModal />
-            )}
+            {user ? <UserSidebar /> : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>

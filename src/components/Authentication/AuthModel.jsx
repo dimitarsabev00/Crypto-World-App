@@ -124,13 +124,16 @@ const AuthModal = () => {
                 textAlign: "center",
                 gap: 20,
                 fontSize: 20,
+                backgroundColor: "#424242",
               }}
             >
               <span>OR</span>
-              <GoogleButton
+              <Button
                 style={{ width: "100%", outline: "none" }}
                 onClick={signInWithGoogle}
-              />
+              >
+                Sign in with Google
+              </Button>
             </Box>
           </div>
         </Fade>
