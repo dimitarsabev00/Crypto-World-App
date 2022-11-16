@@ -1,10 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import CoinPage from "./pages/CoinPage";
+
 import Header from "./components/Header";
-import ErrorPage from "./pages/ErrorPage";
 import AlertBox from "./components/AlertBox";
+import { lazy, Suspense } from "react";
+import { CircularProgress } from "@mui/material";
+const HomePage = lazy(() => import("./pages/HomePage"));
+const CoinPage = lazy(() => import("./pages/CoinPage"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 function App() {
   return (
     <Router>
@@ -17,9 +20,21 @@ function App() {
       >
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/coins/:id" element={<CoinPage />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Suspense
+            fallback={
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <CircularProgress
+                  style={{ color: "gold" }}
+                  size={250}
+                  thickness={1}
+                />
+              </div>
+            }
+          >
+            <Route path="/" element={<HomePage />} />
+            <Route path="/coins/:id" element={<CoinPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Suspense>
         </Routes>
       </div>
       <AlertBox />
