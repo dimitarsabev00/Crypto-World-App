@@ -9,12 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router";
-import { AppState } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import AuthModal from "./Authentication/AuthModel";
 import UserSidebar from "./Authentication/UserSidebar";
 
 function Header() {
-  const { currency, setCurrency, user } = AppState();
+  const { currency, setCurrency, user } = useAppContext();
   const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {

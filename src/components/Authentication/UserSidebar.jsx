@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import { numberWithCommas } from "../CoinsTable";
 import { doc, setDoc } from "firebase/firestore";
-import { AppState } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { auth, db } from "../../configs/firebase";
 import React, { useState } from "react";
 import { Avatar, Button, Drawer } from "@mui/material";
@@ -11,7 +11,7 @@ const UserSidebar = () => {
   const [state, setState] = useState({
     right: false,
   });
-  const { user, setAlert, watchlist, coins, symbol } = AppState();
+  const { user, setAlert, watchlist, coins, symbol } = useAppContext();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (

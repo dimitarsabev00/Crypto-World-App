@@ -1,9 +1,9 @@
 import { Alert, Snackbar } from "@mui/material";
 import { useState } from "react";
-import { AppState } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 const AlertBox = () => {
-  const { alert, setAlert } = AppState();
+  const { alert, setAlert } = useAppContext();
   const [state, setState] = useState({
     open: false,
     vertical: "top",

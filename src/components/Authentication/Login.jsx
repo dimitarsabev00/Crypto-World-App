@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { auth } from "../../configs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { AppState } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { Box, Button, TextField } from "@mui/material";
 
 const Login = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setAlert } = AppState();
+  const { setAlert } = useAppContext();
 
   const handleSubmit = async () => {
     if (!email || !password) {

@@ -18,14 +18,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { CoinList } from "../configs/api";
-import { AppState } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 const CoinsTable = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const { currency, symbol, coins, loading, fetchCoins } = AppState();
+  const { currency, symbol, coins, loading, fetchCoins } = useAppContext();
   const navigate = useNavigate();
 
   useEffect(() => {

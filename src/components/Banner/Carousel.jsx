@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import { AppState } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { TrendingCoins } from "../../configs/api";
 import axios from "axios";
 import AliceCarousel from "react-alice-carousel";
@@ -9,7 +9,7 @@ import { numberWithCommas } from "../CoinsTable";
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency, symbol } = AppState();
+  const { currency, symbol } = useAppContext();
 
   const fetchTrendingCoins = async () => {
     try {

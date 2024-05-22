@@ -5,9 +5,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { CoinList } from "../configs/api";
 import { auth, db } from "../configs/firebase";
 
-const App = createContext();
+const AppContext = createContext();
 
-const AppContext = ({ children }) => {
+const AppProvider = ({ children }) => {
   const [currency, setCurrency] = useState("USD");
   const [symbol, setSymbol] = useState("$");
   const [coins, setCoins] = useState([]);
@@ -19,6 +19,7 @@ const AppContext = ({ children }) => {
   });
   const [user, setUser] = useState(null);
   const [watchlist, setWatchlist] = useState([]);
+
   useEffect(() => {
     if (user) {
       const coinRef = doc(db, "watchlist", user?.uid);
@@ -36,6 +37,7 @@ const AppContext = ({ children }) => {
       };
     }
   }, [user]);
+
   const fetchCoins = async () => {
     try {
       setLoading(true);
@@ -63,7 +65,7 @@ const AppContext = ({ children }) => {
   }, [currency]);
 
   return (
-    <App.Provider
+    <AppContext.Provider
       value={{
         currency,
         setCurrency,
@@ -78,12 +80,10 @@ const AppContext = ({ children }) => {
       }}
     >
       {children}
-    </App.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default AppContext;
+export default AppProvider;
 
-export const AppState = () => {
-  return useContext(App);
-};
+export const useAppContext = () => useContext(AppContext);

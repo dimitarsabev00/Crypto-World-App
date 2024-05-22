@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { HistoricalChart } from "../configs/api";
 import { Line } from "react-chartjs-2";
-import { AppState } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import { CircularProgress, createTheme, ThemeProvider } from "@mui/material";
 import { chartDays } from "../configs/data";
 import SelectButton from "./SelectButton";
@@ -11,7 +11,7 @@ import Chart from "chart.js/auto";
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
-  const { setAlert, currency } = AppState();
+  const { setAlert, currency } = useAppContext();
   const [flag, setflag] = useState(false);
 
   const fetchHistoricData = async () => {

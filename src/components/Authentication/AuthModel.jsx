@@ -3,7 +3,7 @@ import Login from "./Login.jsx";
 import { useState } from "react";
 import GoogleButton from "react-google-button";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { AppState } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { auth } from "../../configs/firebase";
 import {
   AppBar,
@@ -18,7 +18,7 @@ import {
 const AuthModal = () => {
   const [open, setOpen] = useState(false);
 
-  const { setAlert } = AppState();
+  const { setAlert } = useAppContext();
 
   const handleOpen = () => {
     setOpen(true);

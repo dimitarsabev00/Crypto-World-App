@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { AppState } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import { SingleCoin } from "../configs/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
 
-  const { currency, symbol, user, setAlert, watchlist } = AppState();
+  const { currency, symbol, user, setAlert, watchlist } = useAppContext();
 
   const fetchCoin = async () => {
     try {
