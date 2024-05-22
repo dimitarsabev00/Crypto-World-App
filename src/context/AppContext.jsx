@@ -37,11 +37,18 @@ const AppContext = ({ children }) => {
     }
   }, [user]);
   const fetchCoins = async () => {
-    setLoading(true);
-    const { data } = await axios.get(CoinList(currency));
-
-    setCoins(data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const { data } = await axios.get(CoinList(currency));
+      setCoins(data);
+      setLoading(false);
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
 
   useEffect(() => {

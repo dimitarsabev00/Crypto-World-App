@@ -12,9 +12,16 @@ const Carousel = () => {
   const { currency, symbol } = AppState();
 
   const fetchTrendingCoins = async () => {
-    const { data } = await axios.get(TrendingCoins(currency));
-
-    setTrending(data);
+    try {
+      const { data } = await axios.get(TrendingCoins(currency));
+      setTrending(data);
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
 
   useEffect(() => {

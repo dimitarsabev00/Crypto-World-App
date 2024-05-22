@@ -17,9 +17,16 @@ const CoinPage = () => {
   const { currency, symbol, user, setAlert, watchlist } = AppState();
 
   const fetchCoin = async () => {
-    const { data } = await axios.get(SingleCoin(id));
-
-    setCoin(data);
+    try {
+      const { data } = await axios.get(SingleCoin(id));
+      setCoin(data);
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
   const inWatchlist = watchlist.includes(coin?.id);
   const addToWatchlist = async () => {

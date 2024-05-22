@@ -11,13 +11,23 @@ import Chart from "chart.js/auto";
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
-  const { currency } = AppState();
+  const { setAlert, currency } = AppState();
   const [flag, setflag] = useState(false);
 
   const fetchHistoricData = async () => {
-    const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
-    setflag(true);
-    setHistoricData(data.prices);
+    try {
+      const { data } = await axios.get(
+        HistoricalChart(coin.id, days, currency)
+      );
+      setflag(true);
+      setHistoricData(data.prices);
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
 
   useEffect(() => {
